@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Events Manager Importer
+Plugin Name: WP-Events-Manager-Importer
 Plugin URI: http://asso-ela.com/
-Description: 
+Description: Allow you to easily import a xlsx file into event-manager plugin.
 Version: 1.0
 Author: Soixante Circuits
 Author URI: http://soixantecircuits.fr/

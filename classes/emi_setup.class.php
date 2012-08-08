@@ -12,7 +12,7 @@
 			$notice = null;
 		}
 		else {
-			$notice =__("Event Manager Importer : Event Manager n'est pas activé, afin d'utiliser notre plugin, merci de le faire","emi");
+			$notice =__("WP Event Manager Importer : Event Manager is not enabled. Please enable it before our plugin.","emi");
 		}
 		parent::set_notice($notice);
 	}
