@@ -14,13 +14,13 @@ function plugin_active($plugin){
 }
 
 if (is_admin()){
-	require_once("classes/emi.class.php");
-	require_once("classes/emi_post.class.php");
-	require_once("classes/emi_event.class.php");
-	require_once("classes/emi_location.class.php");
-	require_once("classes/emi_setup.class.php");
-	require_once("classes/emi_save_manager.class.php");
-	require_once("classes/emi_manager.class.php");
+	require_once("inc/admin/classes/emi.class.php");
+	require_once("inc/admin/classes/emi_post.class.php");
+	require_once("inc/admin/classes/emi_event.class.php");
+	require_once("inc/admin/classes/emi_location.class.php");
+	require_once("inc/admin/classes/emi_setup.class.php");
+	require_once("inc/admin/classes/emi_save_manager.class.php");
+	require_once("inc/admin/classes/emi_manager.class.php");
 	require_once("emi_controller.class.php");
 }
 
