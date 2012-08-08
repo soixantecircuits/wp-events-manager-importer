@@ -1,0 +1,71 @@
+#emi-form-preview {
+	margin: 4px 15px 0 0;
+}
+
+.inline-edit-left {
+	width: 29%;
+	float: left;
+}
+
+.inline-edit-center {
+	width: 29%;
+	float: left;
+}
+
+.inline-edit-right {
+	width: 39%;
+	float: left;
+}
+
+.emi-edit input {
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #DFDFDF;
+	background-color: #F9F9F9;
+}
+
+.emi-edit .label-text {
+	font-style: italic;
+	line-height: 1.8em;
+	display: block;
+	float: left;
+}
+
+.emi-edit .inline-edit-left .label-text {
+	width: 8em;
+}
+
+.emi-edit .inline-edit-center .label-text {
+	width: 8em;
+}
+
+.emi-edit .inline-edit-right .label-text {
+	width: 5em;
+}
+
+.emi-edit .input-text-wrap {
+	display: block;
+}
+
+.emi-edit .inline-edit-left .input-text-wrap {
+	margin-left: 8em;
+}
+
+.emi-edit .inline-edit-center .input-text-wrap {
+	margin-left: 8em;
+}
+
+.emi-edit .inline-edit-right .input-text-wrap {
+	margin-left: 5em;
+}
+
+.emi-edit .input-text-wrap input,
+.emi-edit .input-text-wrap textarea {
+	width: 90% !important;
+}
+
+.emi-edit .input-text-wrap textarea {
+	min-height: 100px !important;
+}

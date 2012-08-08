@@ -1,0 +1,1 @@
+<?php _e("Import is complete. ","emi"); ?>
