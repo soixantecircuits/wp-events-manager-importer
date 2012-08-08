@@ -137,7 +137,7 @@
 		function get_location_id($post_id){
 			global $wpdb;
 			if ($post_id){
-				$query=$wpdb->prepare('SELECT location_id FROM '.EM_LOCATIONS_TABLE.' WHERE post_id=%d',$post_id);
+				$query=$wpdb->prepare('SELECT location_id FROM '.EM_LOCATIONS_TABLE.' WHERE post_id = %d',$post_id);
 				$post_id=$wpdb->get_var($query);
 				$this->location_id=$post_id;
 				return $this->location_id;			

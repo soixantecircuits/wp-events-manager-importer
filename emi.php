@@ -51,9 +51,9 @@ function emi_admin_notice(){
 
 
 function emi_load_admin_scripts() {
-  	wp_enqueue_script('emi_script', WP_PLUGIN_URL.'/wp-events-manager-importer/javascript/script.js');
-	wp_enqueue_style('emi_style', WP_PLUGIN_URL.'/wp-events-manager-importer/css/style.css');
-	wp_enqueue_style('emi_lightness', WP_PLUGIN_URL.'/wp-events-manager-importer/css/lightness.css');
+  	wp_enqueue_script('emi_script', WP_PLUGIN_URL.'/events-manager-importer/javascript/script.js');
+	wp_enqueue_style('emi_style', WP_PLUGIN_URL.'/events-manager-importer/css/style.css');
+	wp_enqueue_style('emi_lightness', WP_PLUGIN_URL.'/events-manager-importer/css/lightness.css');
 }
 
 function emi_language_call() {
