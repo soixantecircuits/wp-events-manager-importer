@@ -45,12 +45,12 @@ class EmiController{
 					$this->import_save();
 				break;
 				default :
-					require_once "inc/admin/view/emi_upload.php";
+					require_once "view/emi_upload.php";
 				break;
 			}
 		}
 		else {
-			require_once "inc/admin/view/emi_upload.php";
+			require_once "view/emi_upload.php";
 		}
 	}
 
@@ -81,11 +81,11 @@ class EmiController{
 
 	private function import_xlsx()
 	{
-		require_once "inc/ressources/simplexlsx.class.php";
+		require_once "readers_library/simplexlsx.class.php";
 		$xlsx = new SimpleXLSX( $_FILES['file']['tmp_name'] );
 		$location = $this->Manager->getLocationArray($xlsx, false);
 		$events = $this->Manager->getEventArray($xlsx);
-		require_once("inc/admin/view/emi_preview.php");
+		require_once("view/emi_preview.php");
 	}
 
 	private function import_save(){
@@ -93,7 +93,7 @@ class EmiController{
 		$Save_Manager = new EMI_Save_Manager();
 		$saving= $Save_Manager->save_events($_POST["emi"],$_POST["emi-method"],true);
 		ob_clean();
-		require_once("inc/admin/view/emi_save.php");
+		require_once("view/emi_save.php");
 	}
 
 }

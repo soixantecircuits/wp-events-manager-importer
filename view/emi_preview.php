@@ -6,8 +6,8 @@
 <select name="emi-method">
 	<option value="update" selected><?php _e("Update", "emi"); ?></option>
 	<option value="append"><?php _e("Append", "emi"); ?></option>
-	<option value="clean"><?php _e("Purge", "emi"); ?></option>
-	<option value="cleanupdate"><?php _e("Purge and Update", "emi"); ?></option>
+	<option value="clean"><?php _e("Clean", "emi"); ?></option>
+	<option value="cleanupdate"><?php _e("Clean and Update", "emi"); ?></option>
 </select>
 </label>
 <div class="tablenav-pages"><span class="displaying-num"><span class="emi-total-number">X</span> <?php _e("elements", "emi"); ?></span>

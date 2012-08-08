@@ -182,19 +182,19 @@
 		function get_error($code){
 		switch($code) :
 			case 1 :
-				return __("The location was saved successfully","emi");
+				return __("L'emplacement a été sauvegardé avec succès","emi");
 			break;
 			case 2 :
-				return __("Cannot create the post link to the location","emi");
+				return __("Impossible de créer l'article lié à l'emplacement","emi");
 			break;
 			case 3:
-				return __("Error while creating the location's table","emi");
+				return __("Erreur lors de la création du tableau de l'emplacement","emi");
 			break;
 			case 4 : 
-				return __("Error during insertion of locations in database","emi");
+				return __("Erreur lors de l'insertion dans la base de donnée des emplacements","emi");
 			break;
 			default :
-				return __("Error while saving location","emi");
+				return __("Erreur lors de la sauvegarde de l'emplacement","emi");
 			break;
 		endswitch;
 	}
