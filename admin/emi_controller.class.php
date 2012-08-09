@@ -83,7 +83,7 @@ class EmiController{
 	{
 		require_once((dirname(__FILE__))."/../inc/simplexlsx.class.php");
 		$xlsx = new SimpleXLSX( $_FILES['file']['tmp_name'] );
-		$location = $this->Manager->getLocationArray($xlsx, false);
+		$location = $this->Manager->getLocationArray($xlsx, $_POST['geocoding']);
 		$events = $this->Manager->getEventArray($xlsx);
 		require_once("view/emi_preview.php");
 	}
