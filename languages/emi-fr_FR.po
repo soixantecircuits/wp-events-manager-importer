@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: events-manager-importer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-09 10:22+0100\n"
-"PO-Revision-Date: 2012-08-09 10:23+0100\n"
+"POT-Creation-Date: 2012-08-09 10:25+0100\n"
+"PO-Revision-Date: 2012-08-09 10:27+0100\n"
 "Last-Translator: \n"
 "Language-Team: Soixante Circuits <gabriel@soixantecircuits.fr>\n"
 "Language: \n"
@@ -216,24 +216,39 @@ msgid "Event Manager Importer : Event Manager is not enabled. Please enable it b
 msgstr "Event Manager Importer : Event Manager n'est pas activé, afin d'utiliser notre plugin, merci de le faire"
 
 #: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/admin/classes/emi_location.class.php:187
-msgid "L'emplacement a été sauvegardé avec succès"
-msgstr "L'emplacement a été sauvegardé avec succès"
+msgid "The location was saved successfully"
+msgstr "L'évènement a été sauvegardé avec succès"
 
 #: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/admin/classes/emi_location.class.php:190
-msgid "Impossible de créer l'article lié à l'emplacement"
-msgstr "Impossible de créer l'article lié à l'emplacement"
+msgid "Cannot create the post link to the location"
+msgstr "Impossible de créer l'article lié à l'évènement"
 
 #: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/admin/classes/emi_location.class.php:193
-msgid "Erreur lors de la création du tableau de l'emplacement"
-msgstr "Erreur lors de la création du tableau de l'emplacement"
+msgid "Error while creating the location's table"
+msgstr "Erreur durant la creation de la table des emplacements"
 
 #: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/admin/classes/emi_location.class.php:196
-msgid "Erreur lors de l'insertion dans la base de donnée des emplacements"
-msgstr "Erreur lors de l'insertion dans la base de donnée des emplacements"
+msgid "Error during insertion of locations in database"
+msgstr "Erreur lors de l'insertion dans la base de donnée des évenements"
 
 #: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/admin/classes/emi_location.class.php:199
-msgid "Erreur lors de la sauvegarde de l'emplacement"
+msgid "Error while saving location"
 msgstr "Erreur lors de la sauvegarde de l'emplacement"
+
+#~ msgid "L'emplacement a été sauvegardé avec succès"
+#~ msgstr "L'emplacement a été sauvegardé avec succès"
+
+#~ msgid "Impossible de créer l'article lié à l'emplacement"
+#~ msgstr "Impossible de créer l'article lié à l'emplacement"
+
+#~ msgid "Erreur lors de la création du tableau de l'emplacement"
+#~ msgstr "Erreur lors de la création du tableau de l'emplacement"
+
+#~ msgid "Erreur lors de l'insertion dans la base de donnée des emplacements"
+#~ msgstr "Erreur lors de l'insertion dans la base de donnée des emplacements"
+
+#~ msgid "Erreur lors de la sauvegarde de l'emplacement"
+#~ msgstr "Erreur lors de la sauvegarde de l'emplacement"
 
 #~ msgid "Force update"
 #~ msgstr "Effacer et importer"
