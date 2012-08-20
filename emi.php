@@ -14,14 +14,14 @@ function plugin_active($plugin){
 }
 
 if (is_admin()){
-	require_once("admin/classes/emi.class.php");
-	require_once("admin/classes/emi_post.class.php");
-	require_once("admin/classes/emi_event.class.php");
-	require_once("admin/classes/emi_location.class.php");
-	require_once("admin/classes/emi_setup.class.php");
-	require_once("admin/classes/emi_save_manager.class.php");
-	require_once("admin/classes/emi_manager.class.php");
-	require_once("admin/emi_controller.class.php");
+	require_once("inc/admin/classes/emi.class.php");
+	require_once("inc/admin/classes/emi_post.class.php");
+	require_once("inc/admin/classes/emi_event.class.php");
+	require_once("inc/admin/classes/emi_location.class.php");
+	require_once("inc/admin/classes/emi_setup.class.php");
+	require_once("inc/admin/classes/emi_save_manager.class.php");
+	require_once("inc/admin/classes/emi_manager.class.php");
+	require_once("inc/admin/emi_controller.class.php");
 }
 
 function emiStart() {
@@ -51,10 +51,10 @@ function emi_admin_notice(){
 
 
 function emi_load_admin_scripts() {
-	$pluginDir = WP_PLUGIN_URL.'/'.basename(dirname(__FILE__));
-  	wp_enqueue_script('emi_script', $pluginDir . '/javascript/script.js');
-	wp_enqueue_style('emi_style', $pluginDir . '/css/style.css');
-	wp_enqueue_style('emi_lightness', $pluginDir . '/css/lightness.css');
+	$pluginAdminDir = WP_PLUGIN_URL.'/'.basename(dirname(__FILE__)).'/inc/admin/resources';
+  	wp_enqueue_script('emi_script', $pluginAdminDir . '/javascript/script.js');
+	wp_enqueue_style('emi_style', $pluginAdminDir . '/css/style.css');
+	wp_enqueue_style('emi_lightness', $pluginAdminDir . '/css/lightness.css');
 }
 
 function emi_language_call() {
