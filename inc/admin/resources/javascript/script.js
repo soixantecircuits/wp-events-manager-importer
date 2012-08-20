@@ -88,17 +88,26 @@ jQuery(".emi-save").click(function() {
 
 // Calendar \\
 
-jQuery(".emi-event_start_date").datepicker({ 
+function customRange(a) {
+	var date = jQuery('#emi-event_start_date-'+a.getAttribute('parent')).datepicker('getDate');
+	return {
+		minDate: date
+	}
+}
+
+function setDate(a) {
+	var date = jQuery.datepicker.parseDate('dd/mm/yy', a);
+	jQuery('#emi-event_end_date-'+jQuery(this).attr('parent')).datepicker('setDate', date);
+}
+
+jQuery(".emi-event_start_date").datepicker({
 	dateFormat: 'dd/mm/yy',
-	// FIXME
-	//onSelect: function(dateText) {
-		//jQuery("#emi-event_end_date-"+jQuery(this).attr("parent")).datepicker({
-			//dateFormat: 'dd/mm/YY',
-			//minDate: dateText.replace("/", "-")
-		//});
-	//}
+	onSelect: setDate
 });
-jQuery(".emi-event_end_date").datepicker({ dateFormat: 'dd/mm/yy' });
+jQuery(".emi-event_end_date").datepicker({
+	dateFormat: 'dd/mm/yy',
+	beforeShow: customRange
+});
 
 // Pagination \\
 

@@ -157,7 +157,7 @@
 						<span class="label-text"><?php _e("End Date", "emi"); ?> : </span>
 						<span class="input-text-wrap">
    						<input name="emi[<?php echo $r['event_id']; ?>][event][db_event_end_date]" class="emi-event_end_date" id="emi-event_end_date-<?php echo $r['event_id']; ?>"
-								value="<?php echo $r['event_end_date']; ?>" default="<?php echo $r['event_end_date']; ?>">
+								value="<?php echo $r['event_end_date']; ?>" default="<?php echo $r['event_end_date']; ?>" parent="<?php echo $r['event_id']; ?>">
 						</span>
 					</label>
 					<label>
