@@ -1,5 +1,14 @@
 jQuery(document).ready(function() {
 
+// Upload Page \\
+
+jQuery('#parse_button').click(function() {
+	jQuery(this).attr("disabled", "disabled");
+	jQuery('form#upload_form').submit();
+})
+
+// Preview Page \\
+
 var oTable;
 var giRedraw = false;
 
@@ -187,14 +196,11 @@ function update_pagination() {
 
 // Inline-Edit \\
 
-jQuery('#parse_button').click(function() {
-	jQuery(this).attr("disabled", "disabled");
-	jQuery('form#upload_form').submit();
-})
 
 jQuery(".row-actions .fast-edit a, .row-title").click(function() {
-	jQuery("#event_"+jQuery(this).attr("parent")).css("display", "none");
-	jQuery("#emi-edit-"+jQuery(this).attr("parent")).css("display", "");
+	//jQuery("#event_"+jQuery(this).attr("parent")+" > td").css("display", "none");
+	//jQuery("#emi-edit-"+jQuery(this).attr("parent")).css("display", "");
+	jQuery("#event_"+jQuery(this).attr("parent")).after("<tr>"+jQuery('#emi-edit-'+jQuery(this).attr('parent')).children().html()+"</tr>");
 	return false;
 });
 

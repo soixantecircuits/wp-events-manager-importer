@@ -1,4 +1,5 @@
 <h1><?php _e('Parsing Result', 'emi'); ?></h1>
+<form id="emi-form-preview" action="<?php echo $this->createFormAction('emi_save');?>" method="post">
 <table id="preview_table" class="wp-list-table widefat events-table posts" cellspacing="0">
 	<thead>
 		<tr>
@@ -58,10 +59,8 @@
 						Recurrence
 				</td>
 				*/ ?>
-			</tr>
 			<!-- -->
-			<tr class="emi-edit" id="emi-edit-<?php echo $r['event_id']; ?>" style="display:none">
-				<td colspan="10" class="colspanchange">
+			<div class="emi-edit" id="emi-edit-<?php echo $r['event_id']; ?>" style="display:none">
 				<fieldset class="inline-edit-left">
 					<label>
 						<span class="label-text"><?php _e("Title", "emi"); ?> : </span>
@@ -95,7 +94,7 @@
 						<span class="label-text"><?php _e("State", "emi"); ?> : </span>
 						<span class="input-text-wrap">
    						<input name="emi[<?php echo $location[$i]['location_id']; ?>][location][db_location_state]" id="emi-location_state-<?php echo $location[$i]['location_id']; ?>"
-								value="<?php echo $location[$i]['location_state']; ?>" default="<?php echo $location[$i]['location_state']; ?>">
+								sOpenvalue="<?php echo $location[$i]['location_state']; ?>" default="<?php echo $location[$i]['location_state']; ?>">
 						</span>
 					</label>
 					<label>
@@ -193,7 +192,7 @@
 					<button type="button" title="<?php _e("Cancel", "emi"); ?>" class="button-secondary cancel alignleft emi-cancel" parent="<?php echo $r['event_id']; ?>" ><?php _e("Cancel", "emi"); ?></button>
 					<button type="button" title="<?php _e("Save", "emi"); ?>" class="button-primary save alignright emi-save" parent="<?php echo $r['event_id']; ?>" ><?php _e("Save", "emi"); ?></button>
 				</p>
-				</td>
+			</div>
 			</tr>
 			<!-- -->
 			<?php
@@ -202,9 +201,9 @@
 		?>
 	</tbody>
 </table> 
-<form id="emi-form-preview" action="<?php echo $this->createFormAction('emi_save');?>" method="post">
+</form>
 <div class="tablenav bottom">
-<input type="submit" class="button-primary" id="emi-submit" value="<?php _e('Save','emi'); ?>"> 
+<input class="button-primary" id="emi-submit" value="<?php _e('Save','emi'); ?>"> 
 <label>
 <span class="label-text"><?php _e("Import method", "emi"); ?> : </span>
 <select name="emi-method">
