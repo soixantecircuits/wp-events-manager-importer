@@ -1,31 +1,17 @@
 <h1><?php _e('Parsing Result', 'emi'); ?></h1>
-<form id="emi-form-preview" action="<?php echo $this->createFormAction('emi_save');?>" method="post">
-<div class="tablenav top">
-<div class="tablenav-pages"><span class="displaying-num"><span class="emi-total-number">X</span> <?php _e("elements", "emi"); ?></span>
-	<span class="emi-pagination-links">
-		<a class="emi-first-page" title="<?php _e("Go to the first page", "emi"); ?>" href="#">«</a>
-		<a class="emi-prev-page" title="<?php _e("Go to the previous page", "emi"); ?>" href="#">‹</a>
-		<span class="paging-input"><span class="emi-current-page">X</span> <?php _e("of", "emi"); ?> <span class="emi-total-pages">X</span></span>
-		<a class="emi-next-page" title="<?php _e("Go to the next page", "emi"); ?>" href="#">›</a>
-		<a class="emi-last-page" title="<?php _e("Go to the last page", "emi"); ?>" href="#">»</a>
-	</span>
-</div>
-</div>
-<table class="wp-list-table widefat events-table posts" cellspacing="0">
+<table id="preview_table" class="wp-list-table widefat events-table posts" cellspacing="0">
 	<thead>
 		<tr>
+			<th><input class="emi-checkbox-th" type="checkbox"></th>
 			<th><?php _e ( 'Name', 'emi' ); ?></th>
 			<th><?php _e ( 'Location', 'emi' ); ?></th>
-			<th colspan="2"><?php _e ( 'Date and time', 'emi' ); ?></th>
+			<th><?php _e ( 'Date and time', 'emi' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
 		<?php 
 		$i = 0;
 		foreach ( $events as $k => $r ) {
-			// TODO Handle date_i18n with javascript
-			//$event_start_date = date_i18n("D j M Y", strtotime(str_replace('/', '-', $r['event_start_date'])));
-			//$event_end_date = date_i18n("D j M Y", strtotime(str_replace('/', '-', $r['event_end_date'])));
 			$event_start_date = $r['event_start_date'];
 			$event_end_date = $r['event_end_date'];
 			$location_summary = (isset($location[$i]) && $location[$i]['location_name'] != null) ? 
@@ -34,6 +20,9 @@
 			?>
 			
 			<tr class="emi-event" id="event_<?php echo $r['event_id'] ?>">
+				<td>
+					<input class="emi-checkbox" parent="<?php echo $r['event_id']; ?>" type="checkbox">
+				</td>
 				<td>
 					<strong>
 						<a class="row-title emi-title" href="#" parent="<?php echo $r['event_id']; ?>"><?php echo $r['event_name']; ?></a>
@@ -70,6 +59,7 @@
 				</td>
 				*/ ?>
 			</tr>
+			<!-- -->
 			<tr class="emi-edit" id="emi-edit-<?php echo $r['event_id']; ?>" style="display:none">
 				<td colspan="10" class="colspanchange">
 				<fieldset class="inline-edit-left">
@@ -205,12 +195,14 @@
 				</p>
 				</td>
 			</tr>
+			<!-- -->
 			<?php
 			$i++;
 		}
 		?>
 	</tbody>
 </table> 
+<form id="emi-form-preview" action="<?php echo $this->createFormAction('emi_save');?>" method="post">
 <div class="tablenav bottom">
 <input type="submit" class="button-primary" id="emi-submit" value="<?php _e('Save','emi'); ?>"> 
 <label>
@@ -222,13 +214,10 @@
 	<option value="cleanupdate"><?php _e("Clean and Update", "emi"); ?></option>
 </select>
 </label>
-<div class="tablenav-pages"><span class="displaying-num"><span class="emi-total-number">X</span> <?php _e("elements", "emi"); ?></span>
+<div class="tablenav-pages">
 	<span class="emi-pagination-links">
-		<a class="emi-first-page" title="<?php _e("Go to the first page", "emi"); ?>" href="#">«</a>
-		<a class="emi-prev-page" title="<?php _e("Go to the previous page", "emi"); ?>" href="#">‹</a>
-		<span class="paging-input"><span class="emi-current-page">X</span> <?php _e("of", "emi"); ?> <span class="emi-total-pages">X</span></span>
-		<a class="emi-next-page" title="<?php _e("Go to the next page", "emi"); ?>" href="#">›</a>
-		<a class="emi-last-page" title="<?php _e("Go to the last page", "emi"); ?>" href="#">»</a>
+		<span class="displaying-num"><span id="emi_number_elements"></span> <?php _e('elements', 'emi'); ?></span>
+		<!-- Pagination content here -->
 	</span>
 </div>
 </div>

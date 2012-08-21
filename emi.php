@@ -39,6 +39,7 @@ function emiInstall(){
 		$Setup=new EMI_Setup();
 	ob_clean();
 }
+
 function emi_admin_notice(){
 	ob_start();
 		$Emi = new EMI();
@@ -49,10 +50,10 @@ function emi_admin_notice(){
 	}
 }
 
-
 function emi_load_admin_scripts() {
 	$pluginAdminDir = WP_PLUGIN_URL.'/'.basename(dirname(__FILE__)).'/inc/admin/resources';
-  	wp_enqueue_script('emi_script', $pluginAdminDir . '/javascript/script.js');
+	wp_enqueue_script('emi_script', $pluginAdminDir . '/javascript/script.js');
+	wp_enqueue_script('data_tables', $pluginAdminDir . '/javascript/jquery.dataTables.js');
 	wp_enqueue_style('emi_style', $pluginAdminDir . '/css/style.css');
 	wp_enqueue_style('emi_lightness', $pluginAdminDir . '/css/lightness.css');
 }

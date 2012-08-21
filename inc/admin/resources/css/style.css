@@ -24,7 +24,7 @@
 	border-style: solid;
 	border-color: #DFDFDF;
 	background-color: #FFF;
-}
+	}
 
 .emi-edit .label-text {
 	font-style: italic;
@@ -68,4 +68,12 @@
 
 .emi-edit .input-text-wrap textarea {
 	min-height: 100px !important;
+}
+
+.tablenav .displaying-num {
+	margin-left: 10px;
+}
+
+.emi-checkbox-th {
+	margin: 0 !important;
 }

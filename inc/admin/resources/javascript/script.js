@@ -1,7 +1,191 @@
 jQuery(document).ready(function() {
 
-var pagination = 0;
-var totalElements = jQuery(".emi-event").length;
+var oTable;
+var giRedraw = false;
+
+jQuery.fn.dataTableExt.oPagination.four_button = {
+    "fnInit": function ( oSettings, nPaging, fnCallbackDraw )
+    {
+        nFirst = document.createElement( 'a' );
+        nPrevious = document.createElement( 'a' );
+        nNext = document.createElement( 'a' );
+        nLast = document.createElement( 'a' );
+		  nInfo = document.createElement( 'span' );
+		  nInfoStart = document.createElement( 'span' );
+		  nInfoSep = document.createElement( 'span' );
+		  nInfoEnd = document.createElement( 'span' );
+
+		  /* Rename pagination text */
+		  jQuery(nFirst).text('«');
+		  jQuery(nPrevious).text('‹');
+		  jQuery(nNext).text('›');
+		  jQuery(nLast).text('»');
+		  jQuery(nInfoSep).text(' / ');
+
+        nFirst.className = "paginate_button first";
+        nPrevious.className = "paginate_button previous";
+        nNext.className="paginate_button next";
+        nLast.className = "paginate_button last";
+		  nInfo.className = "paging-input displaying-num";
+		  nInfoStart.className = "emi-current-page";
+		  nInfoEnd.className = "emi-total-page";
+          
+        jQuery('.emi-pagination-links').append( nFirst );
+        jQuery('.emi-pagination-links').append( nPrevious );
+        jQuery('.emi-pagination-links').append( nInfo );
+        jQuery('.emi-pagination-links').append( nNext );
+        jQuery('.emi-pagination-links').append( nLast );
+
+        jQuery('.paging-input').append( nInfoStart );
+        jQuery('.paging-input').append( nInfoSep );
+        jQuery('.paging-input').append( nInfoEnd );
+          
+        jQuery(nFirst).click( function () {
+            oSettings.oApi._fnPageChange( oSettings, "first" );
+            fnCallbackDraw( oSettings );
+        } );
+          
+        jQuery(nPrevious).click( function() {
+            oSettings.oApi._fnPageChange( oSettings, "previous" );
+            fnCallbackDraw( oSettings );
+        } );
+          
+        jQuery(nNext).click( function() {
+            oSettings.oApi._fnPageChange( oSettings, "next" );
+            fnCallbackDraw( oSettings );
+        } );
+          
+        jQuery(nLast).click( function() {
+            oSettings.oApi._fnPageChange( oSettings, "last" );
+            fnCallbackDraw( oSettings );
+        } );
+          
+        /* Disallow text selection */
+        jQuery(nFirst).bind( 'selectstart', function () { return false; } );
+        jQuery(nPrevious).bind( 'selectstart', function () { return false; } );
+        jQuery(nNext).bind( 'selectstart', function () { return false; } );
+        jQuery(nLast).bind( 'selectstart', function () { return false; } );
+    },
+     
+    "fnUpdate": function ( oSettings, fnCallbackDraw )
+    {
+		  /* Update for pagination informations */
+		  var oPaging = oSettings.oInstance.fnPagingInfo();
+		  jQuery('#emi_number_elements').text(oPaging.iTotal);
+		  jQuery('.emi-current-page').text(oPaging.iPage + 1);
+		  jQuery('.emi-total-page').text(oPaging.iTotalPages);
+
+		  update_pagination();
+
+        if ( !oSettings.aanFeatures.p )
+        {
+            return;
+        }
+          
+        /* Loop over each instance of the pager */
+        var an = jQuery('.emi-pagination-links').children('a');
+        for ( var i=0 ; i<an.length ; i++ )
+        {
+            if ( oSettings._iDisplayStart === 0 )
+            {
+                an[0].className = "disabled";
+                an[1].className = "disabled";
+            }
+            else
+            {
+                an[0].className = "";
+                an[1].className = "";
+            }
+              
+            if ( oSettings.fnDisplayEnd() == oSettings.fnRecordsDisplay() )
+            {
+                an[2].className = "disabled";
+                an[3].className = "disabled";
+            }
+            else
+            {
+                an[2].className = "";
+                an[3].className = "";
+            }
+        }
+    }
+};
+
+function fnSave() {
+	var aTrs = oTable.fnGetNodes();
+	var aReturn = new Array();
+
+	jQuery(aTrs).each(function() {
+		//console.log(jQuery(this));
+		if (jQuery(this).attr('class').indexOf('emi-event') != -1)
+			return false;
+		var nextRow = new Array();
+		aReturn.push( nextRow );
+	
+		jQuery("td", this).each(function() {
+			var nextValue = jQuery("input", this).val();
+			nextRow.push(nextValue);
+		});
+	});                  
+
+	console.log(aReturn);
+}
+jQuery('#emi-submit').click(function(){
+	fnSave();
+	return false;
+});
+
+jQuery.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings )
+{
+  return {
+    "iStart":         oSettings._iDisplayStart,
+    "iEnd":           oSettings.fnDisplayEnd(),
+    "iLength":        oSettings._iDisplayLength,
+    "iTotal":         oSettings.fnRecordsTotal(),
+    "iFilteredTotal": oSettings.fnRecordsDisplay(),
+    "iPage":          Math.ceil( oSettings._iDisplayStart / oSettings._iDisplayLength ),
+    "iTotalPages":    Math.ceil( oSettings.fnRecordsDisplay() / oSettings._iDisplayLength )
+  };
+};
+
+oTable = jQuery('#preview_table').dataTable({
+	"sPaginationType": "four_button",
+	"sDom": '<"tablenav top"f>p'
+});
+
+// Delete \\
+
+jQuery('#preview_table_filter').append('<input id="delete-checked" class="button-secondary" value="'+'TODO: TRANSLATE DELETE'+'"/>');
+
+jQuery('#delete-checked').click(function(){
+	jQuery('.emi-checkbox').each(function(){
+		if (jQuery(this).prop('checked')) {
+			oTable.fnDeleteRow(
+				oTable.fnGetPosition(
+					document.getElementById('event_'+jQuery(this).attr('parent'))
+				)
+			);
+		}
+	});
+	jQuery('.emi-checkbox-th').prop('checked', false);
+});
+
+function update_pagination() {
+	jQuery(".row-actions .trash a").unbind();
+	jQuery(".row-actions .trash a").click(function() {
+		oTable.fnDeleteRow(
+			oTable.fnGetPosition(
+				document.getElementById('event_'+jQuery(this).attr('parent'))
+			)
+		);
+	});
+
+	jQuery('.emi-checkbox-th').click(function() {
+		jQuery('.emi-checkbox').prop("checked", jQuery(this).prop("checked"));
+	});
+}
+
+// Inline-Edit \\
 
 jQuery('#parse_button').click(function() {
 	jQuery(this).attr("disabled", "disabled");
@@ -11,12 +195,6 @@ jQuery('#parse_button').click(function() {
 jQuery(".row-actions .fast-edit a, .row-title").click(function() {
 	jQuery("#event_"+jQuery(this).attr("parent")).css("display", "none");
 	jQuery("#emi-edit-"+jQuery(this).attr("parent")).css("display", "");
-	return false;
-});
-
-jQuery(".row-actions .trash a").click(function() {
-	jQuery("#event_"+jQuery(this).attr("parent")).remove();
-	jQuery("#emi-edit-"+jQuery(this).attr("parent")).remove();
 	return false;
 });
 
@@ -107,66 +285,6 @@ jQuery(".emi-event_start_date").datepicker({
 jQuery(".emi-event_end_date").datepicker({
 	dateFormat: 'dd/mm/yy',
 	beforeShow: customRange
-});
-
-// Pagination \\
-
-function paginate() {
-	jQuery(".emi-event").css("display", "none");
-
-	var j = 0;
-	for (var i = pagination * 15 + 1; i < (pagination * 15) + 16; i++) {
-		jQuery("#event_"+i).css("display", "");
-	}
-
-	jQuery(".emi-first-page").removeClass("disabled");
-	jQuery(".emi-prev-page").removeClass("disabled");
-	jQuery(".emi-next-page").removeClass("disabled");
-	jQuery(".emi-last-page").removeClass("disabled");
-	if (pagination == 0) {
-		jQuery(".emi-first-page").addClass("disabled");
-		jQuery(".emi-prev-page").addClass("disabled");
-	} else if (pagination == Math.floor(totalElements / 15)) {
-		jQuery(".emi-next-page").addClass("disabled");
-		jQuery(".emi-last-page").addClass("disabled");
-	}
-
-	jQuery(".emi-total-number").text(totalElements);
-	jQuery(".emi-current-page").text(pagination + 1);
-	jQuery(".emi-total-pages").text(Math.floor(totalElements / 15) + 1);
-}
-paginate();
-
-jQuery(".emi-first-page").click(function() {
-	if (pagination > 0) {
-		pagination = 0;
-		paginate();
-	}
-	return false;
-});
-
-jQuery(".emi-prev-page").click(function() {
-	if (pagination > 0) {
-		pagination--;
-		paginate();
-	}
-	return false;
-});
-
-jQuery(".emi-next-page").click(function() {
-	if (pagination < Math.floor(totalElements / 15)) {
-		pagination++;
-		paginate();
-	}
-	return false;
-});
-
-jQuery(".emi-last-page").click(function() {
-	if (pagination < Math.floor(totalElements / 15)) {
-		pagination = Math.floor(totalElements / 15);
-		paginate();
-	}
-	return false;
 });
 
 });
