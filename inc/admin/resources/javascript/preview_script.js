@@ -228,19 +228,19 @@ jQuery(".emi-cancel").click(function() {
 
 jQuery(".emi-save").click(function() {
 	if (jQuery("#emi-event_name-"+jQuery(this).attr("parent")).val() == '') {
-		alert("Title cannot be empty");
+		alert(loc.err_name);
 		return false;
 	}
 	if (jQuery("#emi-location_name-"+jQuery(this).attr("parent")).val() == '') {
-		alert("Location name cannot be empty");
+		alert(loc.err_location);
 		return false;
 	}
-	if (jQuery("#emi-location_adress-"+jQuery(this).attr("parent")).val() == '') {
-		alert("Address cannot be empty");
+	if (jQuery("#emi-location_address-"+jQuery(this).attr("parent")).val() == '') {
+		alert(loc.err_address);
 		return false;
 	}
 	if (jQuery("#emi-location_town-"+jQuery(this).attr("parent")).val() == '') {
-		alert("Town cannot be empty");
+		alert(loc.err_town);
 		return false;
 	}
 	//if (jQuery("#emi-location_country-"+jQuery(this).attr("parent")).val() == '') {
@@ -248,19 +248,19 @@ jQuery(".emi-save").click(function() {
 		//return false;
 	//}
 	if (jQuery("#emi-event_start_time-"+jQuery(this).attr("parent")).val() == '') {
-		alert("Start hour cannot be empty");
+		alert(loc.err_start_time);
 		return false;
 	}
 	if (jQuery("#emi-event_end_time-"+jQuery(this).attr("parent")).val() == '') {
-		alert("End hour cannot be empty");
+		alert(loc.err_end_time);
 		return false;
 	}
 	if (jQuery("#emi-event_start_date-"+jQuery(this).attr("parent")).val() == '') {
-		alert("Start date cannot be empty");
+		alert(loc.err_end_date);
 		return false;
 	}
 	if (jQuery("#emi-event_end_date-"+jQuery(this).attr("parent")).val() == '') {
-		alert("End date cannot be empty");
+		alert(loc.err_name);
 		return false;
 	}
 	jQuery("#event_"+jQuery(this).attr("parent")+" .emi-title").text(jQuery("#emi-event_name-"+jQuery(this).attr("parent")).val());

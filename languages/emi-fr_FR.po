@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: events-manager-importer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-23 13:22+0100\n"
-"PO-Revision-Date: 2012-08-23 13:23+0100\n"
+"POT-Creation-Date: 2012-08-23 18:36+0100\n"
+"PO-Revision-Date: 2012-08-23 18:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: Soixante Circuits <gabriel@soixantecircuits.fr>\n"
 "Language: \n"
@@ -31,6 +31,38 @@ msgstr "Type de fichier non supporté"
 #: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:3
 msgid "Delete checked events"
 msgstr "Supprimer les évènements séléctionnés"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:4
+msgid "Title cannot be empty"
+msgstr "Le titre ne peut pas être vide"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:5
+msgid "Location name cannot be empty"
+msgstr "L'emplacement ne peut pas être vide"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:6
+msgid "Address cannot be empty"
+msgstr "L'address de fin ne peut pas être vide"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:7
+msgid "Town cannot be empty"
+msgstr "La ville ne peut pas être vide"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:8
+msgid "Start hour cannot be empty"
+msgstr "L'heure de début ne peut pas être vide"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:9
+msgid "End hour cannot be empty"
+msgstr "L'heure de fin ne peut pas être vide"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:10
+msgid "Start date cannot be empty"
+msgstr "La date de début ne peut pas être vide"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:11
+msgid "End date cannot be empty"
+msgstr "La date de fin ne peut pas être vide"
 
 #: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_events.php:9
 msgid "Edit"
