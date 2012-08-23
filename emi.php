@@ -2,7 +2,7 @@
 /*
 Plugin Name: Events Manager Importer
 Plugin URI: http://asso-ela.com/
-Description: Import your .xlsx into Events Manager like you want. 
+Description: Import your .xlsx into Events Manager like you want.
 Version: 1.0
 Author: Soixante Circuits
 Author URI: http://soixantecircuits.fr/
@@ -46,14 +46,14 @@ function emi_admin_notice(){
 		$notice = $Emi->get_notice();
 	ob_clean();
 	if (!empty($notice)){
-    	echo '<div class="error"><p>'.$Emi->get_notice().'</p></div>';
+		echo '<div class="error"><p>'.$Emi->get_notice().'</p></div>';
 	}
 }
 
 function emi_load_admin_scripts() {
 	$pluginAdminDir = WP_PLUGIN_URL.'/'.basename(dirname(__FILE__)).'/inc/admin/resources';
-	wp_enqueue_script('emi_script', $pluginAdminDir . '/javascript/script.js');
-	wp_enqueue_script('data_tables', $pluginAdminDir . '/javascript/jquery.dataTables.js');
+	wp_enqueue_script('emi_preview_script', $pluginAdminDir . '/javascript/preview_script.js', null, '1.0', true);
+	wp_enqueue_script('emi_data_tables', $pluginAdminDir . '/javascript/jquery.dataTables.js', null, '1.9.3', true);
 	wp_enqueue_style('emi_style', $pluginAdminDir . '/css/style.css');
 	wp_enqueue_style('emi_lightness', $pluginAdminDir . '/css/lightness.css');
 }

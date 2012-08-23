@@ -1,16 +1,59 @@
 jQuery(document).ready(function() {
 
-// Upload Page \\
+/**
+ * Upload Page
+ */
 
 jQuery('#parse_button').click(function() {
 	jQuery(this).attr("disabled", "disabled");
 	jQuery('form#upload_form').submit();
 })
 
-// Preview Page \\
+/**
+ * Preview Page
+ */
+
+if (jQuery('#emi-form-preview').length > 0) {
+	preview_page();
+}
+
+});
+
+function preview_page () {
 
 var oTable;
 var giRedraw = false;
+
+function update_pagination() {
+	jQuery(".row-actions .trash a").unbind();
+	jQuery(".row-actions .trash a").click(function() {
+		oTable.fnDeleteRow(
+			oTable.fnGetPosition(
+				document.getElementById('event_'+jQuery(this).attr('parent'))
+			)
+		);
+		jQuery('#emi-edit-'+jQuery(this).attr('parent')).remove();
+	});
+
+	jQuery('.emi-checkbox-th').click(function() {
+		jQuery('.emi-checkbox').prop("checked", jQuery(this).prop("checked"));
+	});
+
+	// Inline-Edit
+	jQuery(".row-actions .fast-edit a, .row-title").unbind();
+	jQuery(".row-actions .fast-edit a, .row-title").click(function() {
+		cancel(jQuery("#event_temp").attr('parent'));
+		var hidden_content = jQuery('#emi-edit-'+jQuery(this).attr('parent')).children();
+		jQuery("#event_"+jQuery(this).attr("parent")).after(
+			"<tr id='event_temp' class='emi-edit' parent='"+jQuery(this).attr('parent')+"'>"+
+				"<td colspan=4></td>"+
+			"</tr>"
+		);
+		jQuery('#event_temp > td').append(hidden_content);
+		jQuery('#event_'+jQuery(this).attr('parent')).css('display', 'none');
+		return false;
+	});
+}
 
 jQuery.fn.dataTableExt.oPagination.four_button = {
     "fnInit": function ( oSettings, nPaging, fnCallbackDraw )
@@ -120,26 +163,6 @@ jQuery.fn.dataTableExt.oPagination.four_button = {
     }
 };
 
-//function fnSave() {
-	//var aTrs = oTable.fnGetNodes();
-	//var aReturn = new Array();
-//
-	//jQuery(aTrs).each(function() {
-		////console.log(jQuery(this));
-		//if (jQuery(this).attr('class').indexOf('emi-event') != -1)
-			//return false;
-		//var nextRow = new Array();
-		//aReturn.push( nextRow );
-//
-		//jQuery("td", this).each(function() {
-			//var nextValue = jQuery("input", this).val();
-			//nextRow.push(nextValue);
-		//});
-	//});
-//
-	//console.log(aReturn);
-//}
-
 jQuery.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings )
 {
   return {
@@ -158,8 +181,6 @@ oTable = jQuery('#preview_table').dataTable({
 	"sDom": '<"tablenav top"f>p'
 });
 
-// Delete \\
-
 jQuery('#preview_table_filter').append('<button id="delete-checked" class="button-secondary">'+loc.del_checked+'</button>');
 
 jQuery('#delete-checked').click(function(){
@@ -176,37 +197,6 @@ jQuery('#delete-checked').click(function(){
 	jQuery('.emi-checkbox-th').prop('checked', false);
 	return false;
 });
-
-function update_pagination() {
-	jQuery(".row-actions .trash a").unbind();
-	jQuery(".row-actions .trash a").click(function() {
-		oTable.fnDeleteRow(
-			oTable.fnGetPosition(
-				document.getElementById('event_'+jQuery(this).attr('parent'))
-			)
-		);
-		jQuery('#emi-edit-'+jQuery(this).attr('parent')).remove();
-	});
-
-	jQuery('.emi-checkbox-th').click(function() {
-		jQuery('.emi-checkbox').prop("checked", jQuery(this).prop("checked"));
-	});
-
-	// Inline-Edit
-	jQuery(".row-actions .fast-edit a, .row-title").unbind();
-	jQuery(".row-actions .fast-edit a, .row-title").click(function() {
-		cancel(jQuery("#event_temp").attr('parent'));
-		var hidden_content = jQuery('#emi-edit-'+jQuery(this).attr('parent')).children();
-		jQuery("#event_"+jQuery(this).attr("parent")).after(
-			"<tr id='event_temp' class='emi-edit' parent='"+jQuery(this).attr('parent')+"'>"+
-				"<td colspan=4></td>"+
-			"</tr>"
-		);
-		jQuery('#event_temp > td').append(hidden_content);
-		jQuery('#event_'+jQuery(this).attr('parent')).css('display', 'none');
-		return false;
-	});
-}
 
 function cancel(this_parent) {
 	jQuery("#emi-event_name-"+this_parent).val(jQuery("#event_"+this_parent+" .emi-title").text());
@@ -237,6 +227,42 @@ jQuery(".emi-cancel").click(function() {
 });
 
 jQuery(".emi-save").click(function() {
+	if (jQuery("#emi-event_name-"+jQuery(this).attr("parent")).val() == '') {
+		alert("Title cannot be empty");
+		return false;
+	}
+	if (jQuery("#emi-location_name-"+jQuery(this).attr("parent")).val() == '') {
+		alert("Location name cannot be empty");
+		return false;
+	}
+	if (jQuery("#emi-location_adress-"+jQuery(this).attr("parent")).val() == '') {
+		alert("Address cannot be empty");
+		return false;
+	}
+	if (jQuery("#emi-location_town-"+jQuery(this).attr("parent")).val() == '') {
+		alert("Town cannot be empty");
+		return false;
+	}
+	//if (jQuery("#emi-location_country-"+jQuery(this).attr("parent")).val() == '') {
+		//alert("Country cannot be empty");
+		//return false;
+	//}
+	if (jQuery("#emi-event_start_time-"+jQuery(this).attr("parent")).val() == '') {
+		alert("Start hour cannot be empty");
+		return false;
+	}
+	if (jQuery("#emi-event_end_time-"+jQuery(this).attr("parent")).val() == '') {
+		alert("End hour cannot be empty");
+		return false;
+	}
+	if (jQuery("#emi-event_start_date-"+jQuery(this).attr("parent")).val() == '') {
+		alert("Start date cannot be empty");
+		return false;
+	}
+	if (jQuery("#emi-event_end_date-"+jQuery(this).attr("parent")).val() == '') {
+		alert("End date cannot be empty");
+		return false;
+	}
 	jQuery("#event_"+jQuery(this).attr("parent")+" .emi-title").text(jQuery("#emi-event_name-"+jQuery(this).attr("parent")).val());
 
 	jQuery("#emi-location_name-"+jQuery(this).attr("parent")).attr("default", jQuery("#emi-location_name-"+jQuery(this).attr("parent")).val());
@@ -302,5 +328,4 @@ jQuery(".emi-event_end_date").datepicker({
 	beforeShow: customRange
 });
 
-});
-
+};
