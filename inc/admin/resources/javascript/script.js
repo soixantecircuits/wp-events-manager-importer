@@ -120,29 +120,25 @@ jQuery.fn.dataTableExt.oPagination.four_button = {
     }
 };
 
-function fnSave() {
-	var aTrs = oTable.fnGetNodes();
-	var aReturn = new Array();
-
-	jQuery(aTrs).each(function() {
-		//console.log(jQuery(this));
-		if (jQuery(this).attr('class').indexOf('emi-event') != -1)
-			return false;
-		var nextRow = new Array();
-		aReturn.push( nextRow );
-
-		jQuery("td", this).each(function() {
-			var nextValue = jQuery("input", this).val();
-			nextRow.push(nextValue);
-		});
-	});
-
-	console.log(aReturn);
-}
-jQuery('#emi-submit').click(function(){
-	fnSave();
-	return false;
-});
+//function fnSave() {
+	//var aTrs = oTable.fnGetNodes();
+	//var aReturn = new Array();
+//
+	//jQuery(aTrs).each(function() {
+		////console.log(jQuery(this));
+		//if (jQuery(this).attr('class').indexOf('emi-event') != -1)
+			//return false;
+		//var nextRow = new Array();
+		//aReturn.push( nextRow );
+//
+		//jQuery("td", this).each(function() {
+			//var nextValue = jQuery("input", this).val();
+			//nextRow.push(nextValue);
+		//});
+	//});
+//
+	//console.log(aReturn);
+//}
 
 jQuery.fn.dataTableExt.oApi.fnPagingInfo = function ( oSettings )
 {
@@ -174,9 +170,11 @@ jQuery('#delete-checked').click(function(){
 					document.getElementById('event_'+jQuery(this).attr('parent'))
 				)
 			);
+			jQuery('#emi-edit-'+jQuery(this).attr('parent')).remove();
 		}
 	});
 	jQuery('.emi-checkbox-th').prop('checked', false);
+	return false;
 });
 
 function update_pagination() {
@@ -187,43 +185,55 @@ function update_pagination() {
 				document.getElementById('event_'+jQuery(this).attr('parent'))
 			)
 		);
+		jQuery('#emi-edit-'+jQuery(this).attr('parent')).remove();
 	});
 
 	jQuery('.emi-checkbox-th').click(function() {
 		jQuery('.emi-checkbox').prop("checked", jQuery(this).prop("checked"));
 	});
+
+	// Inline-Edit
+	jQuery(".row-actions .fast-edit a, .row-title").unbind();
+	jQuery(".row-actions .fast-edit a, .row-title").click(function() {
+		cancel(jQuery("#event_temp").attr('parent'));
+		var hidden_content = jQuery('#emi-edit-'+jQuery(this).attr('parent')).children();
+		jQuery("#event_"+jQuery(this).attr("parent")).after(
+			"<tr id='event_temp' class='emi-edit' parent='"+jQuery(this).attr('parent')+"'>"+
+				"<td colspan=4></td>"+
+			"</tr>"
+		);
+		jQuery('#event_temp > td').append(hidden_content);
+		jQuery('#event_'+jQuery(this).attr('parent')).css('display', 'none');
+		return false;
+	});
 }
 
-// Inline-Edit \\
+function cancel(this_parent) {
+	jQuery("#emi-event_name-"+this_parent).val(jQuery("#event_"+this_parent+" .emi-title").text());
+	jQuery("#emi-location_name-"+this_parent).val(jQuery("#emi-location_name-"+this_parent).attr("default"));
+	jQuery("#emi-location_address-"+this_parent).val(jQuery("#emi-location_address-"+this_parent).attr("default"));
+	jQuery("#emi-location_town-"+this_parent).val(jQuery("#emi-location_town-"+this_parent).attr("default"));
+	jQuery("#emi-location_state-"+this_parent).val(jQuery("#emi-location_state-"+this_parent).attr("default"));
+	jQuery("#emi-location_postcode-"+this_parent).val(jQuery("#emi-location_postcode-"+this_parent).attr("default"));
+	jQuery("#emi-location_region-"+this_parent).val(jQuery("#emi-location_region-"+this_parent).attr("default"));
+	jQuery("#emi-location_country-"+this_parent).val(jQuery("#emi-location_country-"+this_parent).attr("default"));
+	jQuery("#emi-location_latitude-"+this_parent).val(jQuery("#emi-location_latitude-"+this_parent).attr("default"));
+	jQuery("#emi-location_longitude-"+this_parent).val(jQuery("#emi-location_longitude-"+this_parent).attr("default"));
+	jQuery("#emi-post_content-"+this_parent).val(jQuery("#emi-post_content-"+this_parent).attr("default"));
 
-jQuery(".row-actions .fast-edit a, .row-title").click(function() {
-	//jQuery("#event_"+jQuery(this).attr("parent")+" > td").css("display", "none");
-	//jQuery("#emi-edit-"+jQuery(this).attr("parent")).css("display", "");
-	jQuery("#event_"+jQuery(this).attr("parent")).after("<tr>"+jQuery('#emi-edit-'+jQuery(this).attr('parent')).children().html()+"</tr>");
+	jQuery("#emi-event_start_date-"+this_parent).val(jQuery("#emi-event_start_date-"+this_parent).attr("default"));
+	jQuery("#emi-event_end_date-"+this_parent).val(jQuery("#emi-event_end_date-"+this_parent).attr("default"));
+	jQuery("#emi-event_start_time-"+this_parent).val(jQuery("#emi-event_start_time-"+this_parent).attr("default"));
+	jQuery("#emi-event_end_time-"+this_parent).val(jQuery("#emi-event_end_time-"+this_parent).attr("default"));
+
+	jQuery("#emi-edit-"+this_parent).append(jQuery('#event_temp > td').children());
+	jQuery('#event_temp').remove();
+	jQuery("#event_"+this_parent).css("display", "");
 	return false;
-});
+}
 
 jQuery(".emi-cancel").click(function() {
-	jQuery("#emi-event_name-"+jQuery(this).attr("parent")).val(jQuery("#event_"+jQuery(this).attr("parent")+" .emi-title").text());
-	jQuery("#emi-location_name-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_name-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-location_address-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_address-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-location_town-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_town-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-location_state-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_state-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-location_postcode-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_postcode-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-location_region-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_region-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-location_country-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_country-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-location_latitude-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_latitude-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-location_longitude-"+jQuery(this).attr("parent")).val(jQuery("#emi-location_longitude-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-post_content-"+jQuery(this).attr("parent")).val(jQuery("#emi-post_content-"+jQuery(this).attr("parent")).attr("default"));
-
-	jQuery("#emi-event_start_date-"+jQuery(this).attr("parent")).val(jQuery("#emi-event_start_date-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-event_end_date-"+jQuery(this).attr("parent")).val(jQuery("#emi-event_end_date-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-event_start_time-"+jQuery(this).attr("parent")).val(jQuery("#emi-event_start_time-"+jQuery(this).attr("parent")).attr("default"));
-	jQuery("#emi-event_end_time-"+jQuery(this).attr("parent")).val(jQuery("#emi-event_end_time-"+jQuery(this).attr("parent")).attr("default"));
-
-	jQuery("#emi-edit-"+jQuery(this).attr("parent")).css("display", "none");
-	jQuery("#event_"+jQuery(this).attr("parent")).css("display", "");
-	return false;
+	cancel(jQuery(this).attr('parent'));
 });
 
 jQuery(".emi-save").click(function() {
@@ -263,8 +273,8 @@ jQuery(".emi-save").click(function() {
 		jQuery("#emi-event_end_time-"+jQuery(this).attr("parent")).val()
 	);
 
-
-	jQuery("#emi-edit-"+jQuery(this).attr("parent")).css("display", "none");
+	jQuery("#emi-edit-"+jQuery(this).attr("parent")).append(jQuery('#event_temp > td').children());
+	jQuery('#event_temp').remove();
 	jQuery("#event_"+jQuery(this).attr("parent")).css("display", "");
 	return false;
 });
