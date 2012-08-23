@@ -14,7 +14,7 @@ class EmiController{
 
 	function __construct(){
 		$this->setValues();
-		$this->Manager = new EMI_Manager();		
+		$this->Manager = new EMI_Manager();
 		add_action('admin_menu', array(&$this,'configureMenu'));
 	}
 
@@ -32,7 +32,7 @@ class EmiController{
 	}
 
 	//CONTROLL
-	function importPageController() 
+	function importPageController()
 	{
 		if (!empty($_GET["emi_action"]))
 		{

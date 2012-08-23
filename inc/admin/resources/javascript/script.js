@@ -38,7 +38,7 @@ jQuery.fn.dataTableExt.oPagination.four_button = {
 		  nInfo.className = "paging-input displaying-num";
 		  nInfoStart.className = "emi-current-page";
 		  nInfoEnd.className = "emi-total-page";
-          
+
         jQuery('.emi-pagination-links').append( nFirst );
         jQuery('.emi-pagination-links').append( nPrevious );
         jQuery('.emi-pagination-links').append( nInfo );
@@ -48,34 +48,34 @@ jQuery.fn.dataTableExt.oPagination.four_button = {
         jQuery('.paging-input').append( nInfoStart );
         jQuery('.paging-input').append( nInfoSep );
         jQuery('.paging-input').append( nInfoEnd );
-          
+
         jQuery(nFirst).click( function () {
             oSettings.oApi._fnPageChange( oSettings, "first" );
             fnCallbackDraw( oSettings );
         } );
-          
+
         jQuery(nPrevious).click( function() {
             oSettings.oApi._fnPageChange( oSettings, "previous" );
             fnCallbackDraw( oSettings );
         } );
-          
+
         jQuery(nNext).click( function() {
             oSettings.oApi._fnPageChange( oSettings, "next" );
             fnCallbackDraw( oSettings );
         } );
-          
+
         jQuery(nLast).click( function() {
             oSettings.oApi._fnPageChange( oSettings, "last" );
             fnCallbackDraw( oSettings );
         } );
-          
+
         /* Disallow text selection */
         jQuery(nFirst).bind( 'selectstart', function () { return false; } );
         jQuery(nPrevious).bind( 'selectstart', function () { return false; } );
         jQuery(nNext).bind( 'selectstart', function () { return false; } );
         jQuery(nLast).bind( 'selectstart', function () { return false; } );
     },
-     
+
     "fnUpdate": function ( oSettings, fnCallbackDraw )
     {
 		  /* Update for pagination informations */
@@ -90,7 +90,7 @@ jQuery.fn.dataTableExt.oPagination.four_button = {
         {
             return;
         }
-          
+
         /* Loop over each instance of the pager */
         var an = jQuery('.emi-pagination-links').children('a');
         for ( var i=0 ; i<an.length ; i++ )
@@ -105,7 +105,7 @@ jQuery.fn.dataTableExt.oPagination.four_button = {
                 an[0].className = "";
                 an[1].className = "";
             }
-              
+
             if ( oSettings.fnDisplayEnd() == oSettings.fnRecordsDisplay() )
             {
                 an[2].className = "disabled";
@@ -130,12 +130,12 @@ function fnSave() {
 			return false;
 		var nextRow = new Array();
 		aReturn.push( nextRow );
-	
+
 		jQuery("td", this).each(function() {
 			var nextValue = jQuery("input", this).val();
 			nextRow.push(nextValue);
 		});
-	});                  
+	});
 
 	console.log(aReturn);
 }
@@ -164,7 +164,7 @@ oTable = jQuery('#preview_table').dataTable({
 
 // Delete \\
 
-jQuery('#preview_table_filter').append('<input id="delete-checked" class="button-secondary" value="'+'TODO: TRANSLATE DELETE'+'"/>');
+jQuery('#preview_table_filter').append('<button id="delete-checked" class="button-secondary">'+loc.del_checked+'</button>');
 
 jQuery('#delete-checked').click(function(){
 	jQuery('.emi-checkbox').each(function(){
@@ -195,7 +195,6 @@ function update_pagination() {
 }
 
 // Inline-Edit \\
-
 
 jQuery(".row-actions .fast-edit a, .row-title").click(function() {
 	//jQuery("#event_"+jQuery(this).attr("parent")+" > td").css("display", "none");
@@ -256,7 +255,7 @@ jQuery(".emi-save").click(function() {
 	jQuery("#event_"+jQuery(this).attr("parent")+" .event_date").empty();
 	jQuery("#event_"+jQuery(this).attr("parent")+" .event_date").append(
 		jQuery("#emi-event_start_date-"+jQuery(this).attr("parent")).val() +
-		((jQuery("#emi-event_start_date"+jQuery(this).attr("parent")).val() != jQuery("#emi-event_end_date-"+jQuery(this).attr("parent")).val()) ? 
+		((jQuery("#emi-event_start_date"+jQuery(this).attr("parent")).val() != jQuery("#emi-event_end_date-"+jQuery(this).attr("parent")).val()) ?
 			" - " + jQuery("#emi-event_end_date-"+jQuery(this).attr("parent")).val() : "") +
 		"<br />" +
 		jQuery("#emi-event_start_time-"+jQuery(this).attr("parent")).val() +
@@ -266,7 +265,7 @@ jQuery(".emi-save").click(function() {
 
 
 	jQuery("#emi-edit-"+jQuery(this).attr("parent")).css("display", "none");
-	jQuery("#event_"+jQuery(this).attr("parent")).css("display", "");	
+	jQuery("#event_"+jQuery(this).attr("parent")).css("display", "");
 	return false;
 });
 
