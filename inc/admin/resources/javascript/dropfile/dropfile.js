@@ -2,7 +2,7 @@
 	//default options
 	var d_o={
 		"script" : "/../wp-content/plugins/wp-events-manager-importer/inc/admin/resources/javascript/dropfile/upload.php"
-		,"success_label":"File which is going to be updated : <br/>"
+		,"success_label":"File which is going to be uploaded : <br/>"
 	};
 
 	$.fn.dropfile=function(o){
