@@ -14,7 +14,7 @@ class EmiController{
 
 	function __construct(){
 		$this->setValues();
-		$this->Manager = new EMI_Manager();		
+		$this->Manager = new EMI_Manager();
 		add_action('admin_menu', array(&$this,'configureMenu'));
 	}
 
@@ -32,7 +32,7 @@ class EmiController{
 	}
 
 	//CONTROLL
-	function importPageController() 
+	function importPageController()
 	{
 		if (!empty($_GET["emi_action"]))
 		{
@@ -101,9 +101,9 @@ class EmiController{
 
 	private function import_xlsx($file_path)
 	{
-		require_once((dirname(__FILE__))."/../inc/simplexlsx.class.php");
+		require_once(dirname(__FILE__)."/../simplexlsx.class.php");
 		$xlsx = new SimpleXLSX($file_path);
-		$location = $this->Manager->getLocationArray($xlsx, false);
+		$location = $this->Manager->getLocationArray($xlsx, isset($_POST['geocoding']) ? $_POST['geocoding'] : null);
 		$events = $this->Manager->getEventArray($xlsx);
 		require_once("view/emi_preview.php");
 	}

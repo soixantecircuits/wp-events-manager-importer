@@ -20,3 +20,6 @@ This plugin have been developped by Soixante Circuits team members that are :
 - https://github.com/qwazerty
 - https://github.com/schobbent
 
+The following classes are used :
+
+- [simplexlsx] (http://www.phpclasses.org/package/6279-PHP-Parse-and-retrieve-data-from-Excel-XLS-files.html)

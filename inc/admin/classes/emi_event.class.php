@@ -8,7 +8,7 @@
 	protected $db_event_start_time="08:00:00";
 	protected $db_event_end_time="18:00:00";
 	protected $db_event_all_day=0;
-	protected $db_event_start_date="02-";
+	protected $db_event_start_date;
 	protected $db_event_end_date;
 	protected $db_event_rsvp;
 	protected $db_event_rsvp_date;
@@ -50,6 +50,7 @@
 		parent::__construct(); 
 		$this->db_event_name=__("Untitled","emi");
 		$this->hydrate($datas);
+		$this->format_date();
 		$this->event_attributes='a:1:{s:25:"custom_style_field_select";s:0:"";}';
 		$this->db_event_owner=$this->get_current_user_id();
 		$this->start = strtotime($this->db_event_start_date." ".$this->db_event_start_time);
@@ -58,10 +59,24 @@
 	}
 
 	private function hydrate($datas){
-
 		foreach ($datas as $key=>$value){
 			$this->$key=$value;
 		}
+	}
+
+	private function format_date(){
+		$this->db_event_start_date = date(
+			'Y-m-d',
+			strtotime(
+				str_replace("/", "-", $this->db_event_start_date)
+			)
+		);
+		$this->db_event_end_date = date(
+			'Y-m-d',
+			strtotime(
+				str_replace("/", "-", $this->db_event_end_date)
+			)
+		);
 	}
 
 	function get_attribute($attribute){
@@ -84,13 +99,12 @@
 		$this->Post = $this->createPost($post_array);
 		if (empty($this->Post)){return 2;}
 		$this->db_event_slug=$this->Post->post_name;
-	//first we get a event array READY TO BE INSERTED
+	//first we get an event array READY TO BE INSERTED
 		$event_array=$this->get_event_array($this->Post);
 		if (empty($event_array)){return 3;}
 	//insert in em events table
 		$em_insert=$wpdb->insert(EM_EVENTS_TABLE, $event_array);
-		(bool)($em_insert);
-		if (!$em_insert){return 4;}
+		if (!(bool)$em_insert){return 4;}
 	//add posts metas
 		$this->add_post_metas($this->Post);
 	//update his status of the post to publish

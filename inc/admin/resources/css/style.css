@@ -23,8 +23,8 @@
 	border-width: 1px;
 	border-style: solid;
 	border-color: #DFDFDF;
-	background-color: #F9F9F9;
-}
+	background-color: #FFF;
+	}
 
 .emi-edit .label-text {
 	font-style: italic;
@@ -96,6 +96,10 @@
 	color:#AAA;
 }
 
+.emi_droparea .success{
+	color:#21759B;
+}
+
 .emi_droparea .error{
 	color:red;
 }
@@ -103,3 +107,13 @@
 .emi_droparea.hover{
 	border-color: #21759B;
 }
+
+.tablenav .displaying-num {
+	margin-left: 10px;
+}
+
+.emi-checkbox-th {
+	margin: 0 !important;
+}
+
+

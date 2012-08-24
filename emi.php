@@ -2,7 +2,7 @@
 /*
 Plugin Name: Events Manager Importer
 Plugin URI: http://asso-ela.com/
-Description: Import your .xlsx into Events Manager like you want. 
+Description: Import your .xlsx into Events Manager like you want.
 Version: 1.0
 Author: Soixante Circuits
 Author URI: http://soixantecircuits.fr/
@@ -14,14 +14,14 @@ function plugin_active($plugin){
 }
 
 if (is_admin()){
-	require_once("admin/classes/emi.class.php");
-	require_once("admin/classes/emi_post.class.php");
-	require_once("admin/classes/emi_event.class.php");
-	require_once("admin/classes/emi_location.class.php");
-	require_once("admin/classes/emi_setup.class.php");
-	require_once("admin/classes/emi_save_manager.class.php");
-	require_once("admin/classes/emi_manager.class.php");
-	require_once("admin/emi_controller.class.php");
+	require_once("inc/admin/classes/emi.class.php");
+	require_once("inc/admin/classes/emi_post.class.php");
+	require_once("inc/admin/classes/emi_event.class.php");
+	require_once("inc/admin/classes/emi_location.class.php");
+	require_once("inc/admin/classes/emi_setup.class.php");
+	require_once("inc/admin/classes/emi_save_manager.class.php");
+	require_once("inc/admin/classes/emi_manager.class.php");
+	require_once("inc/admin/emi_controller.class.php");
 }
 
 function emiStart() {
@@ -39,22 +39,25 @@ function emiInstall(){
 		$Setup=new EMI_Setup();
 	ob_clean();
 }
+
 function emi_admin_notice(){
 	ob_start();
 		$Emi = new EMI();
 		$notice = $Emi->get_notice();
 	ob_clean();
 	if (!empty($notice)){
-    	echo '<div class="error"><p>'.$Emi->get_notice().'</p></div>';
+		echo '<div class="error"><p>'.$Emi->get_notice().'</p></div>';
 	}
 }
 
-
 function emi_load_admin_scripts() {
-	wp_enqueue_style('emi_style', WP_PLUGIN_URL.'/wp-events-manager-importer/css/style.css');
-	wp_enqueue_style('emi_lightness', WP_PLUGIN_URL.'/wp-events-manager-importer/css/lightness.css');
-	wp_enqueue_script('emi_droparea', WP_PLUGIN_URL.'/wp-events-manager-importer/javascript/dropfile/dropfile.js');
-	wp_enqueue_script('emi_script', WP_PLUGIN_URL.'/wp-events-manager-importer/javascript/script.js');
+	$pluginAdminDir = WP_PLUGIN_URL.'/'.basename(dirname(__FILE__)).'/inc/admin/resources';
+	wp_enqueue_style('emi_style', $pluginAdminDir.'/css/style.css');
+	wp_enqueue_style('emi_lightness', $pluginAdminDir.'/css/lightness.css');
+	wp_enqueue_script('emi_droparea', $pluginAdminDir.'/javascript/dropfile/dropfile.js');
+	wp_enqueue_script('emi_data_tables', $pluginAdminDir . '/javascript/jquery.dataTables.js', null, '1.9.3', true);
+	wp_enqueue_script('emi_preview_script', $pluginAdminDir . '/javascript/preview_script.js', null, '1.0', true);
+	wp_enqueue_script('emi_upload_script', $pluginAdminDir . '/javascript/upload_script.js', null, '1.0', true);
 }
 
 function emi_language_call() {

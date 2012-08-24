@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: events-manager-importer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-03 11:59+0100\n"
-"PO-Revision-Date: 2012-08-03 12:00+0100\n"
+"POT-Creation-Date: 2012-08-23 18:36+0100\n"
+"PO-Revision-Date: 2012-08-23 18:37+0100\n"
 "Last-Translator: \n"
 "Language-Team: Soixante Circuits <gabriel@soixantecircuits.fr>\n"
 "Language: \n"
@@ -13,211 +13,270 @@ msgstr ""
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer\n"
+"X-Poedit-SearchPath-0: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer\n"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/emi_controller.class.php:30
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/emi_controller.class.php:30
 msgid "Emi Import"
 msgstr "Emi Importation"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/emi_controller.class.php:30
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/emi_controller.class.php:30
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_upload.php:3
 msgid "Import"
 msgstr "Importer"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/emi_controller.class.php:69
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/emi_controller.class.php:77
 msgid "Extension type not supported"
 msgstr "Type de fichier non supporté"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_upload.php:3
-msgid "Parse"
-msgstr "Parser"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:3
+msgid "Delete checked events"
+msgstr "Supprimer les évènements séléctionnés"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:1
-msgid "Parsing Result"
-msgstr "Resultat de l'importation"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:4
+msgid "Title cannot be empty"
+msgstr "Le titre ne peut pas être vide"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:5
-msgid "Import method"
-msgstr "Importer"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:5
+msgid "Location name cannot be empty"
+msgstr "L'emplacement ne peut pas être vide"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:7
-msgid "Update"
-msgstr "Mise a jour"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:6
+msgid "Address cannot be empty"
+msgstr "L'address de fin ne peut pas être vide"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:8
-msgid "Force update"
-msgstr "Effacer et importer"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:7
+msgid "Town cannot be empty"
+msgstr "La ville ne peut pas être vide"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:9
-msgid "Append"
-msgstr "Ajouter à la fin"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:8
+msgid "Start hour cannot be empty"
+msgstr "L'heure de début ne peut pas être vide"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:12
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:224
-msgid "elements"
-msgstr "elements"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:9
+msgid "End hour cannot be empty"
+msgstr "L'heure de fin ne peut pas être vide"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:14
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:226
-msgid "Go to the first page"
-msgstr "Aller à la première page"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:10
+msgid "Start date cannot be empty"
+msgstr "La date de début ne peut pas être vide"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:15
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:227
-msgid "Go to the previous page"
-msgstr "Aller à la page précédente"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_js_translation.php:11
+msgid "End date cannot be empty"
+msgstr "La date de fin ne peut pas être vide"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:16
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:228
-msgid "of"
-msgstr "sur"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:17
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:229
-msgid "Go to the next page"
-msgstr "Aller à la page suivante"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:18
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:230
-msgid "Go to the last page"
-msgstr "Aller à la dernière page"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:25
-msgid "Name"
-msgstr "Nom"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:26
-msgid "Location"
-msgstr "Emplacement"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:27
-msgid "Date and time"
-msgstr "Date et heure"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:41
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:60
-msgid "None"
-msgstr "Aucun"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:50
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_events.php:9
 msgid "Edit"
 msgstr "Modifier"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:51
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_events.php:10
 msgid "Delete"
 msgstr "Supprimer"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:85
-msgid "Title"
-msgstr "Titre"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_events.php:19
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:20
+msgid "None"
+msgstr "Aucun"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:92
-msgid "Location name"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_save.php:1
+msgid "Import is complete. "
+msgstr "Importation terminé."
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_upload.php:5
+msgid "Enable geocoding to retrieve location informations. (May take a while)"
+msgstr "Activer le geocoding pour plus d'informations sur les emplacements. (Peut prendre quelques instants)"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:1
+msgid "Parsing Result"
+msgstr "Resultat de l'importation"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:7
+msgid "Name"
+msgstr "Nom"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:8
+msgid "Location"
 msgstr "Emplacement"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:99
-msgid "Address"
-msgstr "Addresse"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:9
+msgid "Date and time"
+msgstr "Date et heure"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:106
-msgid "Town"
-msgstr "Ville"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:113
-msgid "State"
-msgstr "Etat"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:120
-msgid "Postcode"
-msgstr "Code postal"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:127
-msgid "Region"
-msgstr "Region"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:136
-msgid "Country"
-msgstr "Pays"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:143
-msgid "Latitude"
-msgstr "Latitude"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:150
-msgid "Longitude"
-msgstr "Longitude"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:158
-msgid "Start Date"
-msgstr "Date de debut"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:165
-msgid "End Date"
-msgstr "Date de fin"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:172
-msgid "Start hour"
-msgstr "Heure de debut"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:179
-msgid "End hour"
-msgstr "Heure de fin"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:188
-msgid "Content"
-msgstr "Contenu"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:211
-msgid "Cancel"
-msgstr "Annuler"
-
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:212
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/view/emi_preview.php:223
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:34
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:131
 msgid "Save"
 msgstr "Sauvegarder"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_event.class.php:51
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:36
+msgid "Import method"
+msgstr "Importer"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:38
+msgid "Update"
+msgstr "Mise a jour"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:39
+msgid "Append"
+msgstr "Ajouter à la fin"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:40
+msgid "Clean"
+msgstr "Effacer"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:41
+msgid "Clean and Update"
+msgstr "Effacer et mettre à jour"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview.php:46
+msgid "elements"
+msgstr "elements"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:4
+msgid "Title"
+msgstr "Titre"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:11
+msgid "Location name"
+msgstr "Emplacement"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:18
+msgid "Address"
+msgstr "Addresse"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:25
+msgid "Town"
+msgstr "Ville"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:32
+msgid "State"
+msgstr "Etat"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:39
+msgid "Postcode"
+msgstr "Code postal"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:46
+msgid "Region"
+msgstr "Region"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:55
+msgid "Country"
+msgstr "Pays"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:62
+msgid "Latitude"
+msgstr "Latitude"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:69
+msgid "Longitude"
+msgstr "Longitude"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:77
+msgid "Start Date"
+msgstr "Date de debut"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:84
+msgid "End Date"
+msgstr "Date de fin"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:91
+msgid "Start hour"
+msgstr "Heure de debut"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:98
+msgid "End hour"
+msgstr "Heure de fin"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:107
+msgid "Content"
+msgstr "Contenu"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/view/emi_preview_hidden_form.php:130
+msgid "Cancel"
+msgstr "Annuler"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_event.class.php:51
 msgid "Untitled"
 msgstr "Sans Titre"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_event.class.php:165
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_event.class.php:209
 msgid "The event was saved successfully"
 msgstr "L'évènement a été sauvegardé avec succès"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_event.class.php:168
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_event.class.php:212
 msgid "Cannot create the article link with this event"
 msgstr "Impossible de créer l'article lié à l'évènement"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_event.class.php:171
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_event.class.php:215
 msgid "Error during event table import"
 msgstr "Erreur lors de la création du tableau de l'évènement"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_event.class.php:174
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_event.class.php:218
 msgid "Error while saving to the database"
 msgstr "Erreur lors de l'insertion dans la base de donnée des évenements"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_event.class.php:177
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_event.class.php:221
 msgid "Error while updating article status"
 msgstr "Erreur lors de la mise du status de l'article"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_location.class.php:136
-msgid "L'emplacement a été sauvegardé avec succès"
-msgstr "L'emplacement a été sauvegardé avec succès"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_setup.class.php:15
+msgid "Event Manager Importer : Event Manager is not enabled. Please enable it before our plugin."
+msgstr "Event Manager Importer : Event Manager n'est pas activé, afin d'utiliser notre plugin, merci de le faire"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_location.class.php:139
-msgid "Impossible de créer l'article lié à l'emplacement"
-msgstr "Impossible de créer l'article lié à l'emplacement"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_location.class.php:187
+msgid "The location was saved successfully"
+msgstr "L'évènement a été sauvegardé avec succès"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_location.class.php:142
-msgid "Erreur lors de la création du tableau de l'emplacement"
-msgstr "Erreur lors de la création du tableau de l'emplacement"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_location.class.php:190
+msgid "Cannot create the post link to the location"
+msgstr "Impossible de créer l'article lié à l'évènement"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_location.class.php:145
-msgid "Erreur lors de l'insertion dans la base de donnée des emplacements"
-msgstr "Erreur lors de l'insertion dans la base de donnée des emplacements"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_location.class.php:193
+msgid "Error while creating the location's table"
+msgstr "Erreur durant la creation de la table des emplacements"
 
-#: /var/www/asso-ela.dev/wp-content/plugins/events-manager-importer/classes/emi_location.class.php:148
-msgid "Erreur lors de la sauvegarde de l'emplacement"
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_location.class.php:196
+msgid "Error during insertion of locations in database"
+msgstr "Erreur lors de l'insertion dans la base de donnée des évenements"
+
+#: /var/www/asso-ela.dev/wp-content/plugins/wp-events-manager-importer/inc/admin/classes/emi_location.class.php:199
+msgid "Error while saving location"
 msgstr "Erreur lors de la sauvegarde de l'emplacement"
+
+#~ msgid "Go to the first page"
+#~ msgstr "Aller à la première page"
+
+#~ msgid "Go to the previous page"
+#~ msgstr "Aller à la page précédente"
+
+#~ msgid "of"
+#~ msgstr "sur"
+
+#~ msgid "Go to the next page"
+#~ msgstr "Aller à la page suivante"
+
+#~ msgid "Go to the last page"
+#~ msgstr "Aller à la dernière page"
+
+#~ msgid "Parse"
+#~ msgstr "Parser"
+
+#~ msgid "L'emplacement a été sauvegardé avec succès"
+#~ msgstr "L'emplacement a été sauvegardé avec succès"
+
+#~ msgid "Impossible de créer l'article lié à l'emplacement"
+#~ msgstr "Impossible de créer l'article lié à l'emplacement"
+
+#~ msgid "Erreur lors de la création du tableau de l'emplacement"
+#~ msgstr "Erreur lors de la création du tableau de l'emplacement"
+
+#~ msgid "Erreur lors de l'insertion dans la base de donnée des emplacements"
+#~ msgstr "Erreur lors de l'insertion dans la base de donnée des emplacements"
+
+#~ msgid "Erreur lors de la sauvegarde de l'emplacement"
+#~ msgstr "Erreur lors de la sauvegarde de l'emplacement"
+
+#~ msgid "Force update"
+#~ msgstr "Effacer et importer"
 
 #~ msgid "Sans Titre"
 #~ msgstr "Sans Titre"

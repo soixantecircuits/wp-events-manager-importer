@@ -1,12 +1,17 @@
 (function($){
 	//default options
 	var d_o={
-		"script" : "/../wp-content/plugins/wp-events-manager-importer/javascript/dropfile/upload.php"
+		"script" : "/../wp-content/plugins/wp-events-manager-importer/inc/admin/resources/javascript/dropfile/upload.php"
+		,"success_label":"File which is going to be updated : <br/>"
 	};
 
 	$.fn.dropfile=function(o){
 		if (o) $.extend(d_o,o);
 		this.each(function(){
+			var elements={};
+			elements.path_input = $('<input/>').attr({ type: 'hidden', class: 'dropfile_path', name: 'dropfile[path]' }).appendTo(this);
+			elements.type_input=$('<input/>').attr({ type: 'hidden', class: 'dropfile_type', name: 'dropfile[type]' }).appendTo(this);
+			elements.alert=$('<p/>').hide().appendTo(this);
 			$(this).bind({
 			  "dragenter": function(e) {
 			    e.preventDefault();
@@ -23,11 +28,11 @@
 			this.addEventListener('drop',function(e){
 				e.preventDefault();
 				var files= e.dataTransfer.files;
-				upload(files,$(this),0);
+				upload(files,0,$(this),elements);
 			});
 		});
 
-		function upload(files,area,index){
+		function upload(files,index,area,elements){
 			var file= files[index];
 			var xhr = new XMLHttpRequest();
 			area.removeClass("hover");
@@ -35,16 +40,14 @@
 			{
 				if (xhr.readyState==4 && xhr.status==200)
 				{
-
 					var o = JSON.parse(xhr.responseText);
 					if (o.error){
-						console.debug(o);
-						$('<p/>').append(o.error).addClass("error").appendTo(area);
+						elements.alert.text(o.error).removeClass("success").addClass("error").show();
 						return false;
 					}
-					var path_input = $('<input/>').attr({ type: 'hidden', class: 'dropfile_path', name: 'dropfile[path]' }).val(o.file_path).appendTo(area);
-					var type_input = $('<input/>').attr({ type: 'hidden', class: 'dropfile_type', name: 'dropfile[type]' }).val(file.type).appendTo(area);
-					$(".emi_form").submit();
+					elements.path_input.val(o.file_path);
+					elements.type_input.val(file.type);
+					elements.alert.html(d_o.success_label+file.name).removeClass("error").addClass("success").show();
 				}
 			}
 			xhr.open("post",d_o.script,true);

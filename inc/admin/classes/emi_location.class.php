@@ -137,7 +137,7 @@
 		function get_location_id($post_id){
 			global $wpdb;
 			if ($post_id){
-				$query=$wpdb->prepare('SELECT location_id FROM '.EM_LOCATIONS_TABLE.' WHERE post_id=%d',$post_id);
+				$query=$wpdb->prepare('SELECT location_id FROM '.EM_LOCATIONS_TABLE.' WHERE post_id = %d',$post_id);
 				$post_id=$wpdb->get_var($query);
 				$this->location_id=$post_id;
 				return $this->location_id;			
@@ -184,19 +184,19 @@
 		function get_error($code){
 		switch($code) :
 			case 1 :
-				return __("L'emplacement a été sauvegardé avec succès","emi");
+				return __("The location was saved successfully","emi");
 			break;
 			case 2 :
-				return __("Impossible de créer l'article lié à l'emplacement","emi");
+				return __("Cannot create the post link to the location","emi");
 			break;
 			case 3:
-				return __("Erreur lors de la création du tableau de l'emplacement","emi");
+				return __("Error while creating the location's table","emi");
 			break;
 			case 4 : 
-				return __("Erreur lors de l'insertion dans la base de donnée des emplacements","emi");
+				return __("Error during insertion of locations in database","emi");
 			break;
 			default :
-				return __("Erreur lors de la sauvegarde de l'emplacement","emi");
+				return __("Error while saving location","emi");
 			break;
 		endswitch;
 	}
