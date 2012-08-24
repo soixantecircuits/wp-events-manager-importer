@@ -20,6 +20,7 @@
 	</span>
 </div>
 </div>
+
 <table class="wp-list-table widefat events-table posts" cellspacing="0">
 	<thead>
 		<tr>

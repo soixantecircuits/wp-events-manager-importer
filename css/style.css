@@ -69,3 +69,37 @@
 .emi-edit .input-text-wrap textarea {
 	min-height: 100px !important;
 }
+
+.emi_upload_wrap{
+	width: 80%;
+	margin:auto;
+}
+
+.emi_upload_wrap input {
+	margin-top:10px;
+}
+.emi_upload_wrap {
+	margin-top: 10px;
+}
+
+.emi_droparea {
+	text-align: center;
+	width: 100%
+	margin:auto;
+	border: 2px dashed #AAA;
+	padding : 1%;
+}
+
+.emi_droparea {
+	text-align: center;
+	font-size: 1.5em;
+	color:#AAA;
+}
+
+.emi_droparea .error{
+	color:red;
+}
+
+.emi_droparea.hover{
+	border-color: #21759B;
+}

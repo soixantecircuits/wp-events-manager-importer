@@ -67,22 +67,42 @@ class EmiController{
 	}
 
 	private function import_viewer()
-	{
-		switch ($_FILES['file']['type'])
+	{	
+		$file_path="";
+		$dropfile=$_POST["dropfile"];
+		if (empty($dropfile["path"])){
+			$file_path = $_FILES['emi_file']['tmp_name'];
+			$file_type=$_FILES['emi_file']['type'];
+		}
+
+		else if (empty($_FILES['emi_file']['tmp_name'])){
+			$file_path = $dropfile["path"];
+			$file_type=$dropfile["type"];
+		}
+		
+		if(empty($file_path)){ 
+			_e("Empty File");
+			return false;
+		}
+
+		switch ($file_type)
 		{
 			case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" :
-				$this->import_xlsx();
+				$this->import_xlsx($file_path);
+				return true;
 			break;
 			default:
 				_e("Extension type not supported", "emi");
+				return false;
 			break;
 		}
+		return false;
 	}
 
-	private function import_xlsx()
+	private function import_xlsx($file_path)
 	{
 		require_once((dirname(__FILE__))."/../inc/simplexlsx.class.php");
-		$xlsx = new SimpleXLSX( $_FILES['file']['tmp_name'] );
+		$xlsx = new SimpleXLSX($file_path);
 		$location = $this->Manager->getLocationArray($xlsx, false);
 		$events = $this->Manager->getEventArray($xlsx);
 		require_once("view/emi_preview.php");

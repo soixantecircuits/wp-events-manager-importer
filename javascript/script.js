@@ -155,5 +155,10 @@ jQuery(".emi-last-page").click(function() {
 	return false;
 });
 
+jQuery('.emi_droparea').dropfile({
+
+});
+
+
 });
 
