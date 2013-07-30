@@ -70,4 +70,3 @@ add_action('plugins_loaded', 'emi_language_call');
 register_activation_hook( __FILE__, "emiInstall");
 add_action('admin_notices', 'emi_admin_notice');
 ?>
-
