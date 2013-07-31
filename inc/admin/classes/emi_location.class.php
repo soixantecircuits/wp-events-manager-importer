@@ -38,7 +38,7 @@
 		}
 
 		public function set_location_id($id){
-			$location_id=$id;
+			$this->location_id=$id;
 		}
 
 		public function save(){
