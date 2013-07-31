@@ -91,6 +91,10 @@ class EmiController{
 				$this->import_xlsx($file_path);
 				return true;
 			break;
+			case "text/csv" :
+				$this->import_csv($file_path);
+				return true;
+			break;
 			default:
 				_e("Extension type not supported", "emi");
 				return false;
@@ -105,6 +109,16 @@ class EmiController{
 		$xlsx = new SimpleXLSX($file_path);
 		$location = $this->Manager->getLocationArray($xlsx, isset($_POST['geocoding']) ? $_POST['geocoding'] : null);
 		$events = $this->Manager->getEventArray($xlsx);
+		require_once("view/emi_preview.php");
+	}
+
+	private function import_csv($file_path)
+	{
+		// TODO: Parameterize time zone.
+		date_default_timezone_set('America/New_York');
+		$parsed = $this->Manager->parseCsv($file_path);
+		$location = $parsed['location'];
+		$events = $parsed['events'];
 		require_once("view/emi_preview.php");
 	}
 
