@@ -81,7 +81,7 @@
 			}
 			if (!empty($location_id)&&empty($post_id)){
 				$where = array(
-	    			"post_id" => $post_id
+	    			"post_id" => $location_id
 	    		);  
 	    		$where_format = array(
 	    			"%d"
@@ -150,7 +150,11 @@
 		function exist(){
 			global $wpdb;
 			$query =$wpdb->prepare('SELECT location_id FROM '.EM_LOCATIONS_TABLE.' WHERE location_name = %s', $this->db_location_name);
-			return $wpdb->get_var($query);
+			$result = $wpdb->get_var($query);
+			if ($result) {
+				$this->location_id = $result;
+			}
+			return $result;
 		}
 
 		function get_similis(){
