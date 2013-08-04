@@ -115,5 +115,84 @@
 		}
 		return $em_events;
 	}
+
+	/**
+	 * Parses a CSV file and translates between field data and Events Manager Importer expected result.
+	 *
+	 * @param string $filepath Path to the CSV file to be parsed.
+	 * @param array $params Options for parsing.
+	 * @return array An array of two elements: "events", which is an array containing the events data, and "location", similarly.
+	 */
+	// TODO: Parameterize mapping from fields in CSV file to elements in return arrays.
+	function parseCsv ($filepath, $params = array('null_string' => '\N', 'null_value' => null)) {
+		$ret = array(); // Array to be returned.
+		// Initialize data arrays.
+		$location = array();
+		$events = array();
+
+		$f = fopen($filepath, 'r');
+		$r = array();
+		while (($data = fgetcsv($f)) !== false)
+		{
+		    $r[] = $data;
+		}
+
+		$i_l = 0;
+		$i_e = 0;
+		foreach ($r as $v) {
+			$loc = array();
+			$loc['location_id']      = $i_l + 1;
+			$loc['location_name']    = $v[1];
+			$loc['location_address'] = $v[2];
+			if (isset($_POST['geocoding'])) {
+				$geodata = $this->getGeocoding("{$loc['location_name']}, {$v[6]}"); // Use postal code?
+				$loc['location_town']      = $geodata['city'];
+				$loc['location_region']    = $geodata['state_name'];
+				$loc['location_country']   = $geodata['country'];
+				$loc['location_latitude']  = $geodata['lat'];
+				$loc['location_longitude'] = $geodata['lng'];
+			} else {
+				$loc['location_town']     = $v[4];
+				$loc['location_postcode'] = $v[6];
+				$loc['location_region']   = $v[5];
+				//$loc['location_country']  = 'US'; // Event Manager expects country codes.
+			}
+			$loc['post_content'] = null;
+			$location[] = $loc;
+			$i_l++;
+
+			$evs = array();
+			$evs['event_id']            = $i_e + 1;
+			$evs['event_owner']         = 1; // Always the admin?
+			$evs['event_name']          = $v[12];
+			$evs['event_start_time']    = date('H:i:s', strtotime($v[14]));
+			$evs['event_end_time']      = date('H:i:s', strtotime($v[15]));
+			$evs['event_start_date']    = date('d/m/Y', strtotime($v[14]));
+			$evs['event_end_date']      = date('d/m/Y', strtotime($v[15]));
+			$evs['event_all_day']       = ($params['null_string'] === $v[15]) ? 1 : 0; // No end time means "all day".
+			// Coerce end date to end of day as time.
+//			if ($evs['event_all_day']) {
+//				$evs['event_end_date'] = $evs['event_start_date'];
+//				$evs['event_end_time'] = '23:59:59';
+//			}
+			$evs['post_content']        = null;
+			$evs['event_rsvp']          = 0;
+			$evs['event_rsp_date']      = null;
+			$evs['event_spaces']        = null;
+			$evs['event_category_id']   = null;
+			$evs['event_attributes']    = null;
+			$evs['recurrence']          = 0;
+			$evs['recurrence_interval'] = null;
+			$evs['recurrence_freq']     = null;
+			$evs['recurrence_byday']    = null;
+			$evs['recurrence_byweekno'] = null;
+			$events[] = $evs;
+			$i_e++;
+		}
+
+		$ret['location'] = $location;
+		$ret['events'] = $events;
+		return $ret;
+	}
 }
 ?>
