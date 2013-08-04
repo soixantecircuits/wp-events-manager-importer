@@ -114,8 +114,8 @@ class EmiController{
 
 	private function import_csv($file_path)
 	{
-		// TODO: Parameterize time zone.
-		date_default_timezone_set('America/New_York');
+		// Set PHP's timezone to the blog's TZ, parse the CSV file that way.
+		date_default_timezone_set(get_option('timezone_string'));
 		$parsed = $this->Manager->parseCsv($file_path);
 		$location = $parsed['location'];
 		$events = $parsed['events'];
