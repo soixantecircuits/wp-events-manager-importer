@@ -169,7 +169,12 @@
 
 	function exist(){
 		global $wpdb;
-		$query =$wpdb->prepare('SELECT event_id FROM '.EM_EVENTS_TABLE.' WHERE event_name = %s', $this->db_event_name);
+		$query =$wpdb->prepare(
+			'SELECT event_id FROM '.EM_EVENTS_TABLE.' WHERE event_name = %s AND event_start_date = %s AND event_start_time = %s',
+			$this->db_event_name,
+			$this->db_event_start_date,
+			$this->db_event_start_time
+		);
 		return $wpdb->get_var($query);
 	}
 
