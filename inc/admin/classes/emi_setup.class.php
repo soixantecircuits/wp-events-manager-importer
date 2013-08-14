@@ -16,4 +16,4 @@
 		}
 		parent::set_notice($notice);
 	}
-}?>
+}

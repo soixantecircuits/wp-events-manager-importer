@@ -156,6 +156,4 @@ class EmiController{
 		ob_clean();
 		require_once("view/emi_save.php");
 	}
-
 }
-

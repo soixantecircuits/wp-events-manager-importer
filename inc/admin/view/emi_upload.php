@@ -12,4 +12,3 @@
 			<input class="button emi_upload" type="submit" value="<?php _e('Upload and Preview', 'emi'); ?>" />
 	</form>
 </div>
-

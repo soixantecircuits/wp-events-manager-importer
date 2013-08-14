@@ -12,5 +12,4 @@ $js_array = array (
 ); ?>
 <script type="text/javascript">
 	var loc = <?php echo json_encode($js_array); ?>;
-</script><?php
-?>
+</script>

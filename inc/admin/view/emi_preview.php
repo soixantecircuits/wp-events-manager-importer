@@ -49,4 +49,4 @@
 </div>
 </div>
 </form>
-<?php include('emi_preview_js_translation.php'); ?>
+<?php include('emi_preview_js_translation.php');

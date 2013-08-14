@@ -30,4 +30,4 @@
 		}
 		return $format_array;
 	}
-}?>
+}

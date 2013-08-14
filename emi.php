@@ -54,8 +54,6 @@ function upload_create() {
     	define('EMI_THEME_UPLOAD', $upload_dir."/");
 }
 
-
-
 function get_file_info(){
     echo upload_result();
     die();
@@ -112,4 +110,3 @@ add_action('init', 'emiStart',100);
 add_action('plugins_loaded', 'emi_language_call');
 register_activation_hook( __FILE__, "emiInstall");
 add_action('admin_notices', 'emi_admin_notice');
-?>
