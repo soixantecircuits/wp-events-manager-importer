@@ -26,6 +26,9 @@ if (is_admin()){
 
 function emiStart() {
 	if (is_admin()&&plugin_active('events-manager/events-manager.php')){
+		add_action( 'wp_ajax_get_file_info', 'get_file_info' );
+		add_action( 'wp_ajax_nopriv_get_file_info', 'get_file_info' );
+		upload_create();
 		$EmiController = new EmiController();
 	}
 	else if(!plugin_active('events-manager/events-manager.php')){
@@ -36,8 +39,48 @@ function emiStart() {
 
 function emiInstall(){
 	ob_start();
-		$Setup=new EMI_Setup();
+		$Setup = new EMI_Setup();
 	ob_clean();
+}
+
+function upload_create() {   
+    $upload = wp_upload_dir();
+    $upload_dir = $upload['basedir'];
+    $upload_dir = $upload_dir . '/emi_tmp';
+    if (! is_dir($upload_dir)) {
+       mkdir( $upload_dir, 0755 );
+    }
+    if (!defined('EMI_THEME_UPLOAD'))
+    	define('EMI_THEME_UPLOAD', $upload_dir."/");
+}
+
+
+
+function get_file_info(){
+    echo upload_result();
+    die();
+}
+
+function upload_result(){
+  header("content-type : application/json");
+	$h = getallheaders();
+	$o = new stdClass();
+	$path = $uploads['path'];
+	$types = array("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",'text/plain','text/csv');
+	if (in_array($h["x-file-type"], $types)) {
+		$source = file_get_contents("php://input");
+		$new_file = file_put_contents(EMI_THEME_UPLOAD.$h["x-file-name"], $source);
+		if (!empty($new_file)){
+	 		$o->file_path=EMI_THEME_UPLOAD.$h["x-file-name"];
+	 	}
+	 	else {
+	 		$o->error="error during uploading the file";
+	 	}
+	}
+	else {
+		$o->error="file type not supported";
+	}
+ 	return json_encode($o);
 }
 
 function emi_admin_notice(){

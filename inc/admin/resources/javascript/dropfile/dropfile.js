@@ -1,8 +1,9 @@
 (function($){
 	//default options
 	var d_o={
-		"script" : "/../wp-content/plugins/wp-events-manager-importer/inc/admin/resources/javascript/dropfile/upload.php"
-		,"success_label":"File which is going to be uploaded : <br/>"
+		/*"script" : "/../wp-content/plugins/wp-events-manager-importer/inc/admin/resources/javascript/dropfile/upload.php"*/
+		"url" : ajaxurl+"?action=get_file_info"
+		,"success_label": "File which is going to be uploaded : <br/>"
 	};
 
 	$.fn.dropfile=function(o){
@@ -50,7 +51,7 @@
 					elements.alert.html(d_o.success_label+file.name).removeClass("error").addClass("success").show();
 				}
 			}
-			xhr.open("post",d_o.script,true);
+			xhr.open("post", d_o.url, true);
 			xhr.setRequestHeader("content-type","multipart/form-data");
 			xhr.setRequestHeader("x-file-type",file.type);
 			xhr.setRequestHeader("x-file-size",file.size);
