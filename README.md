@@ -12,6 +12,20 @@ Allow you to easily import a xlsx file into event-manager plugin.
 
 Select the import page under Events left admin top menu and follow the instructions.
 
+## Format for XLSX :
+
+As for now we only support basic import :
+"Venue Name" (Libellé Segment) | "Venue Postal Code" (CP-Ville) | "Event MySQL-Formatted Start Date and Time" (Date) | "Event Description" (Description)
+
+## Format for CSV :
+Thanks to [meitar] (https://github.com/meitar)
+
+venue_id,"Venue Name","Venue Street Address","Venue Extended Address","Venue City","Venue State","Venue Postal Code","Venue Country Code","Venue Web Address","Venue Description",event_id,venue_id,"Event Name","Event Status","Event MySQL-Formatted Start Date and Time","Event MySQL-Formatted End Date and Time","Event Web Address","Event Description"
+
+Example file:
+
+
+
 ## Credits
 
 This plugin have been developped by Soixante Circuits team members that are :

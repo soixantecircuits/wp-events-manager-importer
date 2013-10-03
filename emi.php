@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Events Manager Importer
-Plugin URI: http://asso-ela.com/
-Description: Import your .xlsx into Events Manager like you want.
+Plugin URI: http://soixantecircuits.fr/
+Description: Import your .xlsx or CSV into Events Manager the way you want it.
 Version: 1.0
 Author: Soixante Circuits
 Author URI: http://soixantecircuits.fr/
