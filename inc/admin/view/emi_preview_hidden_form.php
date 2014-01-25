@@ -106,8 +106,7 @@
 		<label>
 			<span class="label-text"><?php _e("Content", "emi"); ?> : </span>
 			<span class="input-text-wrap">
-				<textarea name="emi[<?php echo $r['event_id']; ?>][event][db_post_content]" id="emi-post_content-<?php echo $r['event_id']; ?>"
-					default="<?php echo $r['post_content']; ?>"><?php echo $r['post_content']; ?></textarea>
+				<textarea name="emi[<?php echo $r['event_id']; ?>][event][db_post_content]" id="emi-post_content-<?php echo $r['event_id']; ?>"><?php echo $r['post_content']; ?></textarea>
 			</span>
 		</label>
 	</fieldset>
