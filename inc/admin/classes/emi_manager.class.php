@@ -155,9 +155,9 @@
 				$loc['location_town']     = $v[4];
 				$loc['location_postcode'] = $v[6];
 				$loc['location_region']   = $v[5];
-				//$loc['location_country']  = 'US'; // Event Manager expects country codes.
+				$loc['location_country']  = $v[7];
 			}
-			$loc['post_content'] = null;
+			$loc['post_content'] = $v[9];
 			$location[] = $loc;
 			$i_l++;
 
@@ -175,7 +175,7 @@
 //				$evs['event_end_date'] = $evs['event_start_date'];
 //				$evs['event_end_time'] = '23:59:59';
 //			}
-			$evs['post_content']        = null;
+			$evs['post_content']        = stripslashes($v[17]);
 			$evs['event_rsvp']          = 0;
 			$evs['event_rsp_date']      = null;
 			$evs['event_spaces']        = null;

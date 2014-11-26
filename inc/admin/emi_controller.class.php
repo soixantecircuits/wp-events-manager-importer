@@ -91,6 +91,8 @@ class EmiController{
 				$this->import_xlsx($file_path);
 				return true;
 			break;
+			case "application/vnd.ms-excel" :
+			case "application/octet-stream" :
 			case "text/csv" :
 				$this->import_csv($file_path);
 				return true;
